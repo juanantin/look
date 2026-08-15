@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>You Look You Buy</title>
+<meta name="description" content="You Look You Buy — on Robinhood Chain">
+<style>
+  :root {
+    --green: #00c805;
+    --bg: #05070a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .stage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.55);
+  }
+  .overlay {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(10px, 2.5vh, 22px);
+    padding: 20px;
+    text-align: center;
+  }
+  h1 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(28px, 6vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.6);
+  }
+  h1 span {
+    color: var(--green);
+  }
+  .tag {
+    margin: 0;
+    color: #d7ffd9;
+    font-size: clamp(13px, 2vw, 18px);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(10px, 2vw, 16px);
+    margin-top: clamp(6px, 1.5vh, 14px);
+  }
+  .btn {
+    appearance: none;
+    border: 2px solid var(--green);
+    background: rgba(0, 200, 5, 0.12);
+    color: #fff;
+    font-size: clamp(14px, 1.8vw, 17px);
+    font-weight: 700;
+    padding: 0.85em 1.6em;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(6px);
+    transition: background 0.15s ease, transform 0.15s ease;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    background: var(--green);
+    color: #05070a;
+    transform: translateY(-1px);
+  }
+  .ca {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    max-width: 46vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .toast {
+    position: fixed;
+    bottom: clamp(16px, 4vh, 32px);
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    background: var(--green);
+    color: #05070a;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 3;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <video autoplay muted loop playsinline>
+      <source src="assets/hero.webm" type="video/webm">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+    <div class="overlay">
+      <p class="tag">On Robinhood Chain</p>
+      <h1>You Look, You <span>Buy</span></h1>
+      <div class="links">
+        <a class="btn" href="https://dexscreener.com/robinhood-chain/PASTE_PAIR_ADDRESS_HERE" target="_blank" rel="noopener">Chart</a>
+        <a class="btn" href="https://x.com/youlookyouape" target="_blank" rel="noopener">X</a>
+        <button class="btn ca" id="caBtn" type="button" data-ca="TBA">CA: TBA</button>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast">Copied!</div>
+  <script>
+    const caBtn = document.getElementById('caBtn');
+    const toast = document.getElementById('toast');
+    caBtn.addEventListener('click', async () => {
+      const ca = caBtn.dataset.ca;
+      try {
+        await navigator.clipboard.writeText(ca);
+      } catch (e) {
+        const ta = document.createElement('textarea');
+        ta.value = ca;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1200);
+    });
+  </script>
+</body>
+</html>

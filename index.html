@@ -67,25 +67,27 @@
   .tag {
     margin: 0;
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     color: #d7ffd9;
     font-size: clamp(10px, 1.3vw, 13px);
     font-weight: 600;
     letter-spacing: 0.04em;
     text-decoration: none;
-    opacity: 0.9;
+    line-height: 1.3;
+    opacity: 0.95;
   }
   .tag img {
-    width: 1.3em;
-    height: 1.3em;
-    border-radius: 25%;
+    width: clamp(28px, 4vw, 44px);
+    height: clamp(28px, 4vw, 44px);
+    border-radius: 22%;
   }
-  .tag:hover {
+  .tag:hover span {
     text-decoration: underline;
   }
   .tag span {
-    color: var(--green);
+    color: #eeb611;
     font-weight: 800;
   }
   .links {
@@ -155,7 +157,7 @@
     <div class="overlay">
       <a class="tag" href="https://eyes.family" target="_blank" rel="noopener">
         <img src="assets/eyes-logo.png" alt="">
-        Fair launch on <span>eyes.family</span>
+        Fair launch on<br><span>eyes.family</span>
       </a>
       <h1>You Look, You <span>Buy</span></h1>
       <div class="links">

@@ -66,12 +66,20 @@
   }
   .tag {
     margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     color: #d7ffd9;
     font-size: clamp(10px, 1.3vw, 13px);
     font-weight: 600;
     letter-spacing: 0.04em;
     text-decoration: none;
     opacity: 0.9;
+  }
+  .tag img {
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 25%;
   }
   .tag:hover {
     text-decoration: underline;
@@ -145,7 +153,10 @@
       <source src="assets/hero.mp4" type="video/mp4">
     </video>
     <div class="overlay">
-      <a class="tag" href="https://eyes.family" target="_blank" rel="noopener">Fair launch on <span>eyes.family</span></a>
+      <a class="tag" href="https://eyes.family" target="_blank" rel="noopener">
+        <img src="assets/eyes-logo.png" alt="">
+        Fair launch on <span>eyes.family</span>
+      </a>
       <h1>You Look, You <span>Buy</span></h1>
       <div class="links">
         <a class="btn" href="https://dexscreener.com/robinhood-chain/PASTE_PAIR_ADDRESS_HERE" target="_blank" rel="noopener">Chart</a>

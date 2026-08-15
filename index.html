@@ -44,7 +44,9 @@
     position: relative;
     z-index: 2;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(6px, 1.5vh, 14px);
     padding: 20px;
     padding-bottom: clamp(20px, 4vh, 40px);
     text-align: center;
@@ -62,61 +64,54 @@
   h1 span {
     color: var(--green);
   }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(8px, 1.5vw, 14px);
+    margin-top: clamp(4px, 1vh, 10px);
+  }
   .corner {
     position: fixed;
     top: clamp(14px, 3vh, 28px);
     left: clamp(14px, 3vw, 28px);
     z-index: 2;
+  }
+  .tag {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: clamp(10px, 1.5vh, 16px);
-  }
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    gap: 2px;
     color: #d7ffd9;
     font-size: clamp(10px, 1.2vw, 12px);
     font-weight: 600;
     letter-spacing: 0.04em;
     text-decoration: none;
-    line-height: 1.3;
+    line-height: 1.25;
     text-align: left;
     text-shadow: 0 2px 10px rgba(0,0,0,0.7);
   }
   .tag img {
-    width: clamp(28px, 3.4vw, 38px);
-    height: clamp(28px, 3.4vw, 38px);
+    width: clamp(26px, 3.2vw, 34px);
+    height: clamp(26px, 3.2vw, 34px);
     border-radius: 22%;
-    flex-shrink: 0;
+    margin-bottom: 4px;
   }
-  .tag:hover span {
+  .tag:hover .tag-name {
     text-decoration: underline;
   }
-  .tag span {
-    display: block;
+  .tag-name {
     color: #eeb611;
     font-weight: 800;
-  }
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: clamp(8px, 1.5vw, 14px);
   }
   @media (max-width: 640px) {
     .corner {
       left: 50%;
       transform: translateX(-50%);
-      align-items: center;
-      width: calc(100% - 28px);
     }
     .tag {
+      align-items: center;
       text-align: center;
-    }
-    .links {
-      justify-content: center;
     }
   }
   .btn {
@@ -179,16 +174,18 @@
     <div class="corner">
       <a class="tag" href="https://eyes.family" target="_blank" rel="noopener">
         <img src="assets/eyes-logo.png" alt="">
-        Fair launch on<br><span>eyes.family</span>
+        <span>Fair</span>
+        <span>launch on</span>
+        <span class="tag-name">eyes.family</span>
       </a>
-      <div class="links">
-        <a class="btn" href="https://dexscreener.com/robinhood-chain/PASTE_PAIR_ADDRESS_HERE" target="_blank" rel="noopener">Chart</a>
-        <a class="btn" href="https://x.com/youlookyouape" target="_blank" rel="noopener">X</a>
-        <button class="btn ca" id="caBtn" type="button" data-ca="TBA">CA: TBA</button>
-      </div>
     </div>
     <div class="overlay">
       <h1>You Look, You <span>Buy</span></h1>
+      <div class="links">
+        <a class="btn" href="https://dexscreener.com/robinhood-chain/PASTE_PAIR_ADDRESS_HERE" target="_blank" rel="noopener">Chart</a>
+        <a class="btn" href="https://x.com/youlookyouape" target="_blank" rel="noopener">X</a>
+        <button class="btn ca" id="caBtn" type="button" data-ca="0x4e97f33ec3147E63E4027A5dAB6D5bb7376478Dd">CA: 0x4e97...78Dd</button>
+      </div>
     </div>
   </div>
   <div class="toast" id="toast">Copied!</div>

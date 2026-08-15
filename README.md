@@ -4,10 +4,11 @@ Single-page, non-scrolling landing site for the "You Look You Buy" meme on Robin
 
 ## Before going live
 
-Open `index.html` and update two placeholders:
+Open `index.html` and update the remaining placeholder:
 
 1. **Chart link** — replace `PASTE_PAIR_ADDRESS_HERE` in the DexScreener `href` with the real pair address once the token is live.
-2. **Contract address** — replace `TBA` (both the button's `data-ca` attribute and its visible label) with the real CA.
+
+The contract address is already set on the CA button (`data-ca` attribute and visible label).
 
 ## Run locally
 
